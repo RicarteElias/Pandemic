@@ -1,3 +1,4 @@
+import 'package:covidglobal/app/modules/menu/menu_state.dart';
 import 'package:flutter/material.dart';
 
 class MenuPage extends StatefulWidget {
@@ -5,19 +6,6 @@ class MenuPage extends StatefulWidget {
   const MenuPage({Key key, this.title = "Menu"}) : super(key: key);
 
   @override
-  _MenuPageState createState() => _MenuPageState();
+  State<StatefulWidget> createState() => MenuState();
 }
 
-class _MenuPageState extends State<MenuPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: <Widget>[],
-      ),
-    );
-  }
-}

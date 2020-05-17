@@ -1,0 +1,4 @@
+lib/app/components/custom_nav_bar/custom_nav_bar_widget.dart
+test/app/components/custom_nav_bar/custom_nav_bar_widget_test.dart
+lib/app/components/custom_nav_bar/custom_nav_bar_bloc.dart
+test/app/components/custom_nav_bar/custom_nav_bar_bloc_test.dart

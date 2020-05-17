@@ -1,10 +1,10 @@
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:covidglobal/app/repositories/base_repository.dart';
 import 'package:dio/dio.dart';
 
-class ContinentRepository extends Disposable {
+class ContinentRepository extends BaseRepository {
   Future fetchPost(Dio client) async {
     final response =
-        await client.get('https://jsonplaceholder.typicode.com/posts/1');
+        await this.client.get('https://jsonplaceholder.typicode.com/posts/1');
     return response.data;
   }
 

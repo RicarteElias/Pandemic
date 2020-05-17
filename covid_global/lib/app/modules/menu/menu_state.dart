@@ -1,39 +1,29 @@
-import 'package:equatable/equatable.dart';
+import 'package:covidglobal/app/components/custom_nav_bar/custom_nav_bar_widget.dart';
+import 'package:flutter/material.dart';
 
-abstract class MenuStateState extends Equatable {
 
-  final List propss;
-  MenuStateState([this.propss]);
 
-  @override
-  List<Object> get props => (propss ?? []);
-}
+import 'menu_page.dart';
 
-/// UnInitialized
-class UnMenuStateState extends MenuStateState {
-
-  UnMenuStateState();
+class MenuState extends State<MenuPage> {
 
   @override
-  String toString() => 'UnMenuStateState';
-}
+  void initState() {
+    super.initState();
+  }
 
-/// Initialized
-class InMenuStateState extends MenuStateState {
-  final String hello;
-
-  InMenuStateState(this.hello) : super([hello]);
+   
+ 
 
   @override
-  String toString() => 'InMenuStateState $hello';
+   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("provisorio",)),
 
-}
+      bottomNavigationBar: CustomNavBarWidget(
+      ),
 
-class ErrorMenuStateState extends MenuStateState {
-  final String errorMessage;
+    );
+  }
 
-  ErrorMenuStateState(this.errorMessage): super([errorMessage]);
-  
-  @override
-  String toString() => 'ErrorMenuStateState';
 }
