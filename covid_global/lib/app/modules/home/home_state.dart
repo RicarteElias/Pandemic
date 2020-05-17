@@ -1,11 +1,8 @@
 
-import 'package:covidglobal/app/entity/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:logger/logger.dart';
-
 import 'home_page.dart';
-import 'home_repository.dart';
 
 class HomeState extends State<HomePage> with TickerProviderStateMixin {
 
@@ -13,7 +10,7 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
     Logger logger= Logger();  
     AnimationController _controller;
     Animation<double> _animation;
-    HomeRepository _homeRepository = HomeRepository();
+    
   
     initState() {
       super.initState();
@@ -23,19 +20,8 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
   
       _controller.forward();
 
-      _homeRepository.countrylist().then((value){ 
-
-        _controller.reverse();
-
-        Country teste = value.firstWhere((element) => element.country == "Albania");
-        logger.d(
-         teste.continent);
-            }
-        );
-  
-
-      
-      
+    
+        
     }
   
     @override
