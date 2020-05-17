@@ -1,4 +1,5 @@
 
+import 'package:covidglobal/app/entity/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:logger/logger.dart';
@@ -22,7 +23,15 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
   
       _controller.forward();
 
-      logger.d(_homeRepository.countrylist());
+      _homeRepository.countrylist().then((value){ 
+        var paises = List<Country>.from(value) ;
+
+        logger.d(paises);
+        // logger.d(
+        //   value.where((element) => element.country=="Zibawe"));
+            }
+        );
+  
 
       
       

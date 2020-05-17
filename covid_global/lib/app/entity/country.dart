@@ -10,7 +10,7 @@ part 'country.g.dart';
 class Country {
 
 String country;
-List <CountryInfo> countryInfo;
+CountryInfo countryInfo;
 int cases;
 int todayCases;
 int deaths;	

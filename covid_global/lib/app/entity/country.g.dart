@@ -9,10 +9,9 @@ part of 'country.dart';
 Country _$CountryFromJson(Map<String, dynamic> json) {
   return Country(
     country: json['country'] as String,
-    countryInfo: (json['countryInfo'] as List)
-        ?.map((e) =>
-            e == null ? null : CountryInfo.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    countryInfo: json['countryInfo'] == null
+        ? null
+        : CountryInfo.fromJson(json['countryInfo'] as Map<String, dynamic>),
     cases: json['cases'] as int,
     todayCases: json['todayCases'] as int,
     deaths: json['deaths'] as int,
