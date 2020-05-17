@@ -9,8 +9,8 @@ class CountryInfo {
   int id;
   String iso2;
   String iso3;
-  String lat;
-  String long;
+  double lat;
+  double long;
   String flag;
 
 

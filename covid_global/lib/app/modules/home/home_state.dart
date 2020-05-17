@@ -24,11 +24,12 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
       _controller.forward();
 
       _homeRepository.countrylist().then((value){ 
-        var paises = List<Country>.from(value) ;
 
-        logger.d(paises);
-        // logger.d(
-        //   value.where((element) => element.country=="Zibawe"));
+        _controller.reverse();
+
+        Country teste = value.firstWhere((element) => element.country == "Albania");
+        logger.d(
+         teste.continent);
             }
         );
   

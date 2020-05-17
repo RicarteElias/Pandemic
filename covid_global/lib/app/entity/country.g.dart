@@ -19,16 +19,16 @@ Country _$CountryFromJson(Map<String, dynamic> json) {
     recovered: json['recovered'] as int,
     active: json['active'] as int,
     critical: json['critical'] as int,
-    casesPerOneMillion: json['casesPerOneMillion'] as int,
-    deathsPerOneMillion: json['deathsPerOneMillion'] as int,
+    casesPerOneMillion: (json['casesPerOneMillion'] as num)?.toDouble(),
+    deathsPerOneMillion: (json['deathsPerOneMillion'] as num)?.toDouble(),
     updated: json['updated'] as int,
     tests: json['tests'] as int,
     testsPerOneMillion: json['testsPerOneMillion'] as int,
     population: json['population'] as int,
     continent: json['continent'] as String,
-    activePerOneMillion: json['activePerOneMillion'] as String,
-    recoverPerOneMillion: json['recoverPerOneMillion'] as String,
-    criticalPerOneMillion: json['criticalPerOneMillion'] as String,
+    activePerOneMillion: (json['activePerOneMillion'] as num)?.toDouble(),
+    recoverPerOneMillion: (json['recoverPerOneMillion'] as num)?.toDouble(),
+    criticalPerOneMillion: (json['criticalPerOneMillion'] as num)?.toDouble(),
   );
 }
 

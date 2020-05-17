@@ -18,16 +18,16 @@ int todayDeaths;
 int recovered;	
 int active;	
 int critical;	
-int casesPerOneMillion;	
-int deathsPerOneMillion;
+double casesPerOneMillion;	
+double deathsPerOneMillion;
 int updated;
 int tests;
 int testsPerOneMillion;
 int population;
 String continent;
-String activePerOneMillion;
-String recoverPerOneMillion;
-String criticalPerOneMillion;
+double activePerOneMillion;
+double recoverPerOneMillion;
+double criticalPerOneMillion;
 
 
   Country({

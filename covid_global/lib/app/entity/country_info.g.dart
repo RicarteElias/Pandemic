@@ -11,8 +11,8 @@ CountryInfo _$CountryInfoFromJson(Map<String, dynamic> json) {
     id: json['id'] as int,
     iso2: json['iso2'] as String,
     iso3: json['iso3'] as String,
-    lat: json['lat'] as String,
-    long: json['long'] as String,
+    lat: (json['lat'] as num)?.toDouble(),
+    long: (json['long'] as num)?.toDouble(),
     flag: json['flag'] as String,
   );
 }
