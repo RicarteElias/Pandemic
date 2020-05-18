@@ -5,53 +5,64 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:covidglobal/app/components/custom_nav_bar/custom_nav_bar_widget.dart';
 
 int selectedIndex=0;
-double _controllerHeight= 56;
-double _controllerWidth;
-bool sizeController= false;
-
-
 
 List<NavigationItem> items=[
     
-        NavigationItem(icon:Icon(MaterialIcons.flag),title: Text("Brasil") ),
-        NavigationItem(icon: Icon(AntDesign.wordfile1),title: Text("Paises")),
-        NavigationItem(icon: Icon(Ionicons.ios_heart),title: Text("Mundo")),
-        NavigationItem(icon: Icon(Ionicons.ios_help),title: Text("Cuidados"))
+        NavigationItem(icon:Icon(MaterialIcons.flag),title: Text("Brasil"),color: Colors.green),
+        NavigationItem(icon: Icon(MaterialIcons.flag),title: Text("Paises"),color: Colors.indigo),
+        NavigationItem(icon: Icon(FontAwesome.globe),title: Text("Mundo"),color: Colors.red),
+        NavigationItem(icon: Icon(Ionicons.ios_help),title: Text("Cuidados"),color: Colors.greenAccent)
         
   ]
 ;
 
 Widget _buildItem(NavigationItem item, bool isSelected){
-    return Row(children: <Widget>[IconTheme(data: IconThemeData(size: 26), 
-    child: item.icon),
-    isSelected? Padding(
-      padding: const EdgeInsets.only(left: 8),
-      child: item.title,
-    ) : Container()],
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 400),
+      width: isSelected?120:50,
+      height: double.maxFinite,
+      padding: EdgeInsets.only(left:16),
+      decoration: isSelected?BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+        color: item.color
+      ):null,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[IconTheme(data: IconThemeData(size: 26,
+      color: isSelected?Colors.white:Colors.black), 
+      child: item.icon),
+      isSelected? Padding(
+        padding: const EdgeInsets.only(left: 8),
+        child: isSelected?DefaultTextStyle.merge(child:item.title ,style: TextStyle(color: Colors.white)):item.title,
+      ) : Container()],
+      ),
+        ],
+      )
     );
 }
 
 
-Widget _buildItemColumn(NavigationItem item, bool isSelected){
-    return Column(children: <Widget>[IconTheme(data: IconThemeData(size: 26), 
-    child: item.icon),
-    isSelected? Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: item.title,
-    ) : Container()],
-    );
-}
 
 
 class CustomNavBarState extends State<CustomNavBarWidget>{
   @override
   Widget build(BuildContext context) {
+    
     return  AnimatedContainer(
-        duration: Duration(seconds: 1),
-        padding: EdgeInsets.only(left: 8,right: 8),
-        color: Colors.amber,
-        height: _controllerHeight,
-        width: _controllerWidth,
+        duration: Duration(seconds: 2 ),
+        padding: EdgeInsets.only(left: 8,top:5,bottom: 5, right: 8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [BoxShadow(
+            color: Colors.black12,
+            blurRadius: 5,
+          )]
+        ),
+        height: 56,//MediaQuery.of(context).size.height*1.0,
+        width: double.maxFinite,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:
@@ -61,12 +72,8 @@ class CustomNavBarState extends State<CustomNavBarWidget>{
               onTap: (){
                 setState(() {
                   selectedIndex = itemIndex;
-                  if(itemIndex==2){
-                    _controllerHeight = 0;
-                    // _controllerWidth=MediaQuery.of(context).size.height*1.0;
-                  }
                 });
-              },child: sizeController?_buildItemColumn(item, selectedIndex==itemIndex):_buildItem(item, selectedIndex==itemIndex),
+              },child: _buildItem(item, selectedIndex==itemIndex),
             );
           }).toList()
         ,),
@@ -74,14 +81,20 @@ class CustomNavBarState extends State<CustomNavBarWidget>{
     
   }
 
+
+  
+
 }
+
 
 class NavigationItem {
   Icon icon;
   Text title;
+  Color color;
 
   NavigationItem({
     this.icon,
     this.title,
+    this.color,
   });
 }

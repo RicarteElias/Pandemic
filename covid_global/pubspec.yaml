@@ -31,6 +31,7 @@ dependencies:
   build_runner: ^1.10.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the Cu>pertinoIcons class for iOS style icons.
+  flag: ^3.0.1
 
 dev_dependencies:
   mockito: ^4.1.1

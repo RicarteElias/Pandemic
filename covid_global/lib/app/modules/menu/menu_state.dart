@@ -19,9 +19,8 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("provisorio",)),
-      bottomSheet:CustomNavBarWidget(), 
-     
-
+      bottomNavigationBar: CustomNavBarWidget(),
+    
     );
   }
 
