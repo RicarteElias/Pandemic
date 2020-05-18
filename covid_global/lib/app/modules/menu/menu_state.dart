@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'menu_page.dart';
 
-class MenuState extends State<MenuPage> {
+class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
 
   @override
   void initState() {
@@ -19,9 +19,8 @@ class MenuState extends State<MenuPage> {
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("provisorio",)),
-
-      bottomNavigationBar: CustomNavBarWidget(
-      ),
+      bottomSheet:CustomNavBarWidget(), 
+     
 
     );
   }
