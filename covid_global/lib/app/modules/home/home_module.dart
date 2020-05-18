@@ -13,7 +13,7 @@ class HomeModule extends ChildModule {
   @override
   List<Router> get routers => [
         Router(Modular.initialRoute, child: (_, args) => HomePage()),
-        Router("/menu", child: (_,args)=>MenuPage(),transition: TransitionType.scale)
+        Router("/menu", child: (_,args)=>MenuPage(countries: args.data,),transition: TransitionType.scale)
       ];
 
   static Inject get to => Inject<HomeModule>.of();

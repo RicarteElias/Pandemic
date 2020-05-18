@@ -21,11 +21,10 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
       _animation = CurvedAnimation(parent: _controller, curve: Curves.ease);
         _controller.forward();
 
-    _countryRepository.countryList().then((value){
-      Navigator.pushNamed(context, '/menu');
+    _countryRepository.countryList().then((countries){
+      // logger.d(countries);
+      Navigator.pushNamed(context, '/menu',arguments: countries);
     });
-
-    
         
     }
   

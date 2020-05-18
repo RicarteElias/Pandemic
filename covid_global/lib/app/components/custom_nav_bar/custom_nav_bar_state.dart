@@ -80,12 +80,7 @@ class CustomNavBarState extends State<CustomNavBarWidget>{
       );
     
   }
-
-
-  
-
 }
-
 
 class NavigationItem {
   Icon icon;

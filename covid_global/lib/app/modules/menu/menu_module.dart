@@ -9,7 +9,7 @@ class MenuModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-    Router(Modular.initialRoute, child: (_, args) => MenuPage()),
+    Router(Modular.initialRoute, child: (_, args) => MenuPage(countries: args.data,)),
   ];
 
   static Inject get to => Inject<MenuModule>.of();

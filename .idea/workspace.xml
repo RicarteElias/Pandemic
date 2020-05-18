@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17a0ef13-cd03-41d3-b01d-55c198b39855" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Pandemic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pandemic.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/components/custom_nav_bar/custom_nav_bar_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/components/custom_nav_bar/custom_nav_bar_state.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_module.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_state.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/repositories/continent_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/repositories/continent_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/repositories/world_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/repositories/world_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_global/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_global/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/pubspec.yaml" afterDir="false" />
     </list>
@@ -23,7 +25,7 @@
   <component name="ProjectId" id="1c3DC2jzRLxP44ayKMzEwfgX1gC" />
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../versus" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunDashboard">
@@ -56,7 +58,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
