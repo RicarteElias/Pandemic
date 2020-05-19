@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:covidglobal/app/components/donut_chart/donut_chart_widget.dart';
 import 'package:covidglobal/app/entity/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -17,12 +18,10 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
   static Color _backgroundColorController = _collorSelector(0);
 
   MenuState({this.countries});
-
   @override
   void initState() {
     super.initState();
-   _pageController = PageController();
-  //  logger.d(countries);
+   _pageController = PageController(); 
   }
 
   @override
@@ -30,8 +29,6 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
     _pageController.dispose();
     super.dispose();
   }
-
- 
 
   @override
    Widget build(BuildContext context) {
@@ -49,15 +46,16 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
               });
             },
             children: <Widget>[
-              Center(child: Icon(FlutterIcons.Trophy_ant,size: 100,),),
-              _countriesListView(),
-              Center(child: Icon(FlutterIcons.API_ant,size: 100,),),
+              DonutChart(),
+              __countriesListView(),
+              DonutChart(),
               Center(child: Icon(FlutterIcons.USB_ant,size: 100,),),
             ],
           ),
         ),
       ),
     bottomNavigationBar: BottomNavyBar(
+      showElevation: true,
         selectedIndex: _currentIndex,
         onItemSelected: (index) {
           _pageController.jumpToPage(index); 
@@ -94,25 +92,31 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
     );
   }
 
-  _countriesListView(){
-    return new ListView.builder
+  __countriesListView()=> Column(children: <Widget>[
+
+    Container(
+      height:70,
+      width: MediaQuery.of(context).size.height* 1.0,
+      child: Text("lista de países"),),
+    Expanded(child: _countriesList(),)
+    ],);
+  _countriesList()=> ListView.builder
   (
     itemCount: countries.length,
     itemBuilder: (BuildContext ctxt, int index) {
-     return Padding(padding: EdgeInsets.only(left: 10,top:10,right: 10,bottom: 10),child: _cardCountry(countries[index]),);
+     return Padding(padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),child: _cardCountry(countries[index]),);
       }
-    );  
-  }
+    );
 
-  _cardCountry(Country country){
-    return Container(
+  _cardCountry(Country country)=> Container(
       height: 50,
       alignment: Alignment.center ,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
               boxShadow:[BoxShadow(
-                blurRadius: 10,
+                spreadRadius: 2,
+                blurRadius: 5,
                 color: Colors.black26,
               )]
             ),
@@ -143,7 +147,6 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
         ),
       ),
     );
-  }
 
  static _collorSelector(int index){
       if(index==0) { 
@@ -151,11 +154,12 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
       }else if(index==1){
           return Colors.red;
       }else if(index==2){
-        return Colors.blue;
+        return Colors.grey;
       }else{
         return Colors.green;
       }
        
   }
+
 
 }

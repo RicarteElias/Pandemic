@@ -5,13 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/Pandemic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pandemic.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/components/custom_nav_bar/custom_nav_bar_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/components/custom_nav_bar/custom_nav_bar_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_module.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/app_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/app_module.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/components/custom_nav_bar/custom_nav_bar_bloc.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/components/custom_nav_bar/custom_nav_bar_state.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/components/custom_nav_bar/custom_nav_bar_widget.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_global/test/app/components/custom_nav_bar/custom_nav_bar_bloc_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/covid_global/test/app/components/custom_nav_bar/custom_nav_bar_widget_test.dart" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +26,7 @@
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../versus" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunDashboard">

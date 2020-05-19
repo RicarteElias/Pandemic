@@ -1,4 +1,4 @@
-import 'package:covidglobal/app/components/custom_nav_bar/custom_nav_bar_bloc.dart';
+import 'package:covidglobal/app/components/donut_chart/donut_chart_bloc.dart';
 import 'package:covidglobal/app/repositories/base_repository.dart';
 import 'package:covidglobal/app/repositories/continent_repository.dart';
 import 'package:covidglobal/app/repositories/world_repository.dart';
@@ -13,7 +13,7 @@ import 'package:covidglobal/app/modules/home/home_module.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => CustomNavBarBloc()),
+        Bind((i) => DonutChartBloc()),
         Bind((i) => BaseRepository()),
         Bind((i) => ContinentRepository()),
         Bind((i) => WorldRepository()),
