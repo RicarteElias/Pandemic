@@ -36,6 +36,7 @@ dependencies:
   flag: ^3.0.1
   cached_network_image: ^2.2.0+1
   shimmer: ^1.1.1
+  syncfusion_flutter_charts: ^18.1.52
 
 dev_dependencies:
   mockito: ^4.1.1

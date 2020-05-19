@@ -17,7 +17,7 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
     initState() {
       super.initState();
       _controller = AnimationController(
-          duration: const Duration(milliseconds: 3000), vsync: this, value: 0.1);
+          duration: const Duration(milliseconds: 2000), vsync: this, value: 0.1);
       _animation = CurvedAnimation(parent: _controller, curve: Curves.ease);
         _controller.forward();
 
@@ -46,8 +46,14 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
                   scale: _animation,
                   alignment: Alignment.center,
                   child: Icon(Icons.check, size: 200.0,color: Colors.green)
-                  ),SpinKitWave(
-                    color: Colors.indigo,
+                  ),Padding(
+                    padding: const EdgeInsets.only(top:50.0),
+                    child: SpinKitWave(size: 26,
+                      color: Colors.indigo,
+                    ),
+                  ), Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text("Carregando informações",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
                   )
               ],)
           ),
