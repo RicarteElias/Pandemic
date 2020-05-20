@@ -1,5 +1,5 @@
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:covidglobal/app/components/donut_chart/indicator.dart';
+import 'package:covidglobal/app/shared/indicator.dart';
 import 'package:flutter/material.dart';
 
 class DonutChart extends StatelessWidget {
@@ -34,9 +34,6 @@ DonutChart(){
     );
   }
   
-  _corLable(){
-    return charts.TextStyleSpec();
-  }
 
   _generateData(){ 
     var donutData=[
@@ -56,4 +53,5 @@ DonutChart(){
       )
    );
   }
+
 }

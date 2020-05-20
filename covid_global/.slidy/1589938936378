@@ -1,0 +1,4 @@
+lib/app/components/menu/card_country/card_country_widget.dart
+test/app/components/menu/card_country/card_country_widget_test.dart
+lib/app/components/menu/card_country/card_country_bloc.dart
+test/app/components/menu/card_country/card_country_bloc_test.dart
