@@ -239,13 +239,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.4"
-  flag:
-    dependency: "direct main"
-    description:
-      name: flag
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -279,13 +272,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.1.2+1"
-  flutter_svg:
-    dependency: transitive
-    description:
-      name: flutter_svg
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.17.4"
   flutter_test:
     dependency: "direct dev"
     description: flutter

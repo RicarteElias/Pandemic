@@ -1,10 +1,7 @@
 import 'package:covidglobal/app/repositories/base_repository.dart';
-import 'package:covidglobal/app/shared/custom_dio.dart';
 import 'package:dio/dio.dart';
 
 class WorldRepository extends BaseRepository {
-  CustomDio _client = CustomDio();
-
 
 
   Future fetchPost(Dio client) async {

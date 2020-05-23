@@ -1,9 +1,22 @@
-import 'package:dio/native_imp.dart';
+import 'package:dio/dio.dart';
 
-class CustomDio extends DioForNative{
-  CustomDio(){
-    options.baseUrl="https://disease.sh/";
+class CustomDio {
+
+  CustomDio._();
+
+  static Dio _dio;
+
+  static Dio getInstance(){
+    _dio= new Dio();
+    _dio.options.baseUrl="https://disease.sh/";
+    _dio.options.connectTimeout = 5000; //5s
+    _dio.options.receiveTimeout = 3000;
+    return _dio;
   }
-
-
 }
+
+
+
+ // CustomDio(){
+  //   options.baseUrl="https://disease.sh/";
+  // }

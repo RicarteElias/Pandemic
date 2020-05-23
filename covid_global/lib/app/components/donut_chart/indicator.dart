@@ -9,5 +9,8 @@ class Indicator {
     this.value,
     this.color,
   });
+
+
+  
   
 }

@@ -5,10 +5,12 @@ import 'package:covidglobal/app/modules/menu/menu_state.dart';
 
 class MenuPage extends StatefulWidget {
   List<Country> countries;
+  Country brazil;
   
   MenuPage({
     Key key,
     this.countries,
+    this.brazil
   }) : super(key: key);
 
   @override

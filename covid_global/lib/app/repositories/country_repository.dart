@@ -6,11 +6,8 @@ class CountryRepository extends BaseRepository {
 Future<List<Country>> countryList() async {
     
       var response = await this.client.get("v2/countries?yesterday=false&allowNull=true");
-      
       return (response.data as List).map((item) => Country.fromJson(item)).toList();
     }
-
-  //dispose will be called automatically
   @override
   void dispose() {}
 }

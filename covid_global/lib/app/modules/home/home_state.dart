@@ -1,3 +1,4 @@
+import 'package:covidglobal/app/entity/country.dart';
 import 'package:covidglobal/app/repositories/country_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -22,8 +23,8 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
         _controller.forward();
 
     _countryRepository.countryList().then((countries){
-      // logger.d(countries);
-      Navigator.pushNamed(context, '/menu',arguments: countries);
+      Country brazil = countries.firstWhere((element) => element.country == 'Brazil');
+      Navigator.pushNamed(context, '/menu', arguments: countries);
     });
         
     }

@@ -1,6 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:covidglobal/app/components/card_country/card_country_widget.dart';
 import 'package:covidglobal/app/components/donut_chart/donut_chart_widget.dart';
-import 'package:covidglobal/app/components/menu/card_country/card_country_widget.dart';
 import 'package:covidglobal/app/entity/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -15,8 +15,13 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
   List<Country> countries;
   var currentPageValue = 0.0;
   static Color _backgroundColorController = _collorSelector(0);
+  Country _brazil;
 
-  MenuState({this.countries});
+  MenuState({this.countries}){
+      this._brazil = countries.firstWhere((element) => element.country == 'Brazil');
+      
+  }
+
   @override
   void initState() {
     super.initState();
@@ -45,9 +50,9 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
               });
             },
             children: <Widget>[
-              DonutChart(),
+              DonutChart(country: _brazil,),
               __countriesListView(),
-              DonutChart(),
+              DonutChart(country: _brazil,),
               Center(child: Icon(FlutterIcons.USB_ant,size: 100,),),
             ],
           ),

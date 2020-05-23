@@ -1,13 +1,16 @@
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:covidglobal/app/shared/indicator.dart';
+import 'package:covidglobal/app/components/donut_chart/indicator.dart';
+import 'package:covidglobal/app/entity/country.dart';
+import 'package:covidglobal/app/shared/data_ultis.dart';
 import 'package:flutter/material.dart';
 
 class DonutChart extends StatelessWidget {
 
+  Country country;
   List<charts.Series<Indicator,String>> _series = List<charts.Series<Indicator,String>>();
+  var _donutData;
 
-
-DonutChart(){
+  DonutChart({this.country}){
   _generateData();
 }
 
@@ -18,34 +21,42 @@ DonutChart(){
       animate: true,
       animationDuration: Duration(seconds: 1),
       defaultRenderer: charts.ArcRendererConfig(
-        arcWidth: 100,
         arcRendererDecorators: [
           charts.ArcLabelDecorator(
-            labelPosition: charts.ArcLabelPosition.inside,
-            insideLabelStyleSpec: charts.TextStyleSpec(fontSize: 25,
+            insideLabelStyleSpec: charts.TextStyleSpec(fontSize: 26,
             color: charts.MaterialPalette.white,
             fontFamily: 'Roboto',
-            fontWeight: 'bold'
+              ),
+            outsideLabelStyleSpec: charts.TextStyleSpec(fontSize: 26,
+            color: charts.MaterialPalette.white,
+            fontFamily: 'Roboto',
               )
             )
         ]
       ),
+      behaviors: [charts.DatumLegend(
+        outsideJustification: charts.OutsideJustification.endDrawArea,
+        horizontalFirst: false,
+        desiredMaxColumns: 1,
+        cellPadding: EdgeInsets.only(bottom: 4),
+        
+      )],
 
     );
   }
   
 
   _generateData(){ 
-    var donutData=[
-      Indicator(color: Colors.red,value: 15.0,text: "death" ),
-      Indicator(color: Colors.green,value: 25.0,text:"recuperados"),
-      Indicator(color: Colors.blue,value:60,text: "Infectados")
+    _donutData=[
+      Indicator(color: Colors.red,value:DataUtils.percentIndicator(country.deaths, country.cases) ,text: "Mortos" ),
+      Indicator(color: Colors.green,value: DataUtils.percentIndicator(country.recovered, country.cases),text:"Recuperados"),
+      Indicator(color: Colors.blue,value:DataUtils.percentIndicator(country.active, country.cases),text: "Infectados")
     ];
 
     _series.add(
       charts.Series(
-      id:"Mundo",
-      data:donutData ,
+      id:"País",
+      data:_donutData ,
       domainFn: (Indicator indicator,_ )=>indicator.text,
       measureFn: (Indicator indicator,_ )=>indicator.value,
       colorFn: (Indicator indicator,_ )=> charts.ColorUtil.fromDartColor(indicator.color),

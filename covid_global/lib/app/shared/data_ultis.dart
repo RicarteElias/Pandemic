@@ -2,9 +2,9 @@
 
 class DataUtils{
 
-static percentIndicator(double partialAmount , double totalAmount){
+static percentIndicator(int partialAmount , int totalAmount){
   double percent =  100 * partialAmount / totalAmount;
-  return double.parse(percent.toStringAsFixed(2));
+  return double.parse(percent.toStringAsFixed(1));
   }
   
 }
