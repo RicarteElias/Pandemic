@@ -1,6 +1,6 @@
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:covidglobal/app/components/donut_chart/indicator.dart';
 import 'package:covidglobal/app/entity/country.dart';
+import 'package:covidglobal/app/shared/components/donut_chart/indicator.dart';
 import 'package:covidglobal/app/shared/data_ultis.dart';
 import 'package:flutter/material.dart';
 
@@ -34,13 +34,6 @@ class DonutChart extends StatelessWidget {
             )
         ]
       ),
-      behaviors: [charts.DatumLegend(
-        outsideJustification: charts.OutsideJustification.endDrawArea,
-        horizontalFirst: false,
-        desiredMaxColumns: 1,
-        cellPadding: EdgeInsets.only(bottom: 4),
-        
-      )],
 
     );
   }

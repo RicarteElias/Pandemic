@@ -1,11 +1,11 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:covidglobal/app/components/card_country/card_country_widget.dart';
-import 'package:covidglobal/app/components/donut_chart/donut_chart_widget.dart';
 import 'package:covidglobal/app/entity/country.dart';
+import 'package:covidglobal/app/shared/components/donut_chart/donut_chart_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 import 'package:logger/logger.dart';
+import 'Components/card_country/card_country_widget.dart';
 import 'menu_page.dart';
 
 class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
@@ -15,10 +15,10 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
   List<Country> countries;
   var currentPageValue = 0.0;
   static Color _backgroundColorController = _collorSelector(0);
-  Country _brazil;
+  Country _country;
 
   MenuState({this.countries}){
-      this._brazil = countries.firstWhere((element) => element.country == 'Brazil');
+      this._country = countries.firstWhere((element) => element.country == 'Brazil');
       
   }
 
@@ -50,9 +50,9 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
               });
             },
             children: <Widget>[
-              DonutChart(country: _brazil,),
+              _sliverAppBar(),
               __countriesListView(),
-              DonutChart(country: _brazil,),
+              DonutChart(country: _country,),
               Center(child: Icon(FlutterIcons.USB_ant,size: 100,),),
             ],
           ),
@@ -112,12 +112,34 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
       }
     );
 
+  _sliverAppBar(){
+    return CustomScrollView(
+      slivers: <Widget>[
+    SliverAppBar(
+          backgroundColor: Colors.deepPurple,
+          expandedHeight: MediaQuery.of(context).size.height*0.5,
+          floating: false,
+          pinned: true,
+          snap: false,
+          flexibleSpace: FlexibleSpaceBar(
+            title: Text("Estatísticas - Brasil"),
+            background: Container(padding: EdgeInsets.all(40),child: DonutChart(country: _country,)),
+          ),
+        ),SliverFillRemaining(
+          child:Center(
+            child:Icon(FlutterIcons.USB_ant,size: 100,),
+          ),
+        )
+      ],
+    );
+  }
+
 
  static _collorSelector(int index){
       if(index==0) { 
-    return Colors.amber;
+    return Colors.deepPurple;
       }else if(index==1){
-          return Colors.red;
+          return Colors.deepPurple;
       }else if(index==2){
         return Colors.grey;
       }else{
@@ -126,5 +148,22 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
        
   }
 
+  estatisticList(){
+
+  }
+
+
+   estatiscticRow(String text,Widget valor)=> Row(
+    children: <Widget>[
+    Text('$text:',style: TextStyle(color: Colors.white, fontSize: 25),),Padding(padding: EdgeInsets.only(left: 5),child: 
+    valor,)
+    ],    );
+
+   valueWithToday(String value, String todayValue,Color todayColor)=> Row(
+    children: <Widget>[
+    Text(value,style: TextStyle(color:Colors.white,fontSize: 25),),
+    Icon(FlutterIcons.arrow_bold_up_ent,size: 5,color: todayColor,),
+    Text(todayValue,style: TextStyle(color:todayColor,fontSize: 5),),
+      ],); 
 
 }
