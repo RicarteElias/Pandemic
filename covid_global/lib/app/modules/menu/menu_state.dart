@@ -19,6 +19,7 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
 
   MenuState({this.countries}){
       this._country = countries.firstWhere((element) => element.country == 'Brazil');
+    logger.i(_country.toJson());
       
   }
 
@@ -97,7 +98,6 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
   }
 
   __countriesListView()=> Column(children: <Widget>[
-
     Container(
       height:70,
       width: MediaQuery.of(context).size.height* 1.0,
@@ -116,54 +116,103 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
     return CustomScrollView(
       slivers: <Widget>[
     SliverAppBar(
+          stretch: true,
+          centerTitle: true,
           backgroundColor: Colors.deepPurple,
           expandedHeight: MediaQuery.of(context).size.height*0.5,
-          floating: false,
+          floating: true,
           pinned: true,
-          snap: false,
           flexibleSpace: FlexibleSpaceBar(
+
+            stretchModes:  <StretchMode>[
+                StretchMode.zoomBackground,
+                StretchMode.blurBackground,
+                StretchMode.fadeTitle,
+              ],
             title: Text("Estatísticas - Brasil"),
             background: Container(padding: EdgeInsets.all(40),child: DonutChart(country: _country,)),
           ),
-        ),SliverFillRemaining(
-          child:Center(
-            child:Icon(FlutterIcons.USB_ant,size: 100,),
-          ),
+        ),
+        SliverFillRemaining(
+          child: ListView(
+          physics: NeverScrollableScrollPhysics(),  
+          children: <Widget>[
+          Padding(padding: EdgeInsets.all(15),child:separationLine()),
+          estatiscticLine("População", value(_country.population)),
+          estatiscticLine("Total de casos", valueWithToday(_country.cases, _country.todayCases, Colors.red)),
+          estatiscticLine("Total de mortos", valueWithToday(_country.deaths, _country.todayDeaths, Colors.red)),
+          estatiscticLine("Recuperados", value(_country.recovered)),
+          estatiscticLine("Ativos", value(_country.active)),
+          estatiscticLine("Testes", value(_country.tests)),
+          estatiscticLine("Casos por milhão", value(_country.casesPerOneMillion.toInt())),
+          estatiscticLine("Mortes por milhão", value(_country.deathsPerOneMillion.toInt())),
+          _country.recoverPerOneMillion==null?Container():estatiscticLine("Recuperados por milhão", value(_country.recoverPerOneMillion.toInt()))
+            ],),
         )
+        
+        // SliverList(delegate: SliverChildListDelegate(
+        //   [ Padding(padding: EdgeInsets.all(15),child:separationLine()),
+        //   estatiscticLine("População", value(_country.population)),
+        //   estatiscticLine("Total de casos", valueWithToday(_country.cases, _country.todayCases, Colors.red)),
+        //   estatiscticLine("Total de mortos", valueWithToday(_country.deaths, _country.todayDeaths, Colors.red)),
+        //   estatiscticLine("Recuperados", value(_country.recovered)),
+        //   estatiscticLine("Ativos", value(_country.active)),
+        //   estatiscticLine("Testes", value(_country.tests)),
+        //   estatiscticLine("Casos por milhão", value(_country.casesPerOneMillion.toInt())),
+        //   estatiscticLine("Mortes por milhão", value(_country.deathsPerOneMillion.toInt())),
+        //   _country.recoverPerOneMillion==null?Container():estatiscticLine("Recuperados por milhão", value(_country.recoverPerOneMillion.toInt()))
+        //         ]
+        //       )
+        //   ),   
       ],
     );
   }
 
+   Container separationLine(){
+    return Container(
+      color: Colors.grey[600],
+      height: 3,
 
- static _collorSelector(int index){
+    ) ;
+  }
+
+   estatiscticLine(String text,Widget valor)=> Padding(
+     padding: const EdgeInsets.only(left: 15),
+     child: Column(children: <Widget>[
+       Row(
+      children: <Widget>[
+      Text('$text:',style: TextStyle(color: Colors.white, fontSize: 25),),Padding(padding: EdgeInsets.only(left: 5),child: 
+      valor,)
+      ], ),
+      Padding(padding: EdgeInsets.only(top:15, bottom: 15,right: 15),child: separationLine(),)
+     ],)
+   );
+
+   valueWithToday(int value, int todayValue,Color todayColor)=> Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+    Text(value.toString(),style: TextStyle(color:Colors.white,fontSize: 28),),
+    Icon(FlutterIcons.arrow_bold_up_ent,size: 10,color: todayColor,),
+    Text(todayValue.toString(),style: TextStyle(color:todayColor,fontSize: 15),),
+      ],);
+
+
+
+    value(int value)=> Row(
+    children: <Widget>[
+    Text(value.toString(),style: TextStyle(color:Colors.white,fontSize: 28),),
+      ],);
+
+      static _collorSelector(int index){
       if(index==0) { 
-    return Colors.deepPurple;
+          return Colors.deepPurple;
       }else if(index==1){
           return Colors.deepPurple;
       }else if(index==2){
-        return Colors.grey;
+          return Colors.grey;
       }else{
-        return Colors.green;
-      }
-       
+          return Colors.green;
+      }       
   }
-
-  estatisticList(){
-
-  }
-
-
-   estatiscticRow(String text,Widget valor)=> Row(
-    children: <Widget>[
-    Text('$text:',style: TextStyle(color: Colors.white, fontSize: 25),),Padding(padding: EdgeInsets.only(left: 5),child: 
-    valor,)
-    ],    );
-
-   valueWithToday(String value, String todayValue,Color todayColor)=> Row(
-    children: <Widget>[
-    Text(value,style: TextStyle(color:Colors.white,fontSize: 25),),
-    Icon(FlutterIcons.arrow_bold_up_ent,size: 5,color: todayColor,),
-    Text(todayValue,style: TextStyle(color:todayColor,fontSize: 5),),
-      ],); 
 
 }

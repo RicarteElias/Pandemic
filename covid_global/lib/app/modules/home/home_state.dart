@@ -24,7 +24,7 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
 
     _countryRepository.countryList().then((countries){
       Country brazil = countries.firstWhere((element) => element.country == 'Brazil');
-      Navigator.pushNamed(context, '/menu', arguments: countries);
+      Navigator.pushReplacementNamed(context, '/menu', arguments: countries);
     });
         
     }
