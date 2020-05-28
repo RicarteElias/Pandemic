@@ -45,11 +45,12 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
                 ScaleTransition(
                   scale: _animation,
                   alignment: Alignment.center,
-                  child: Icon(Icons.check, size: 200.0,color: Colors.green)
+                  child: 
+                  Image.asset(Constants.ICON,height: MediaQuery.of(context).size.height*0.15,)
                   ),Padding(
-                    padding: const EdgeInsets.only(top:50.0),
+                    padding: const EdgeInsets.only(top:100.0),
                     child: SpinKitWave(size: 26,
-                      color: Colors.indigo,
+                      color: Colors.white
                     ),
                   ), Padding(
                     padding: const EdgeInsets.all(10.0),

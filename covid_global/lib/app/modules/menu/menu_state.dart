@@ -110,9 +110,10 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
   (
     itemCount: countries.length,
     itemBuilder: (BuildContext ctxt, int index) {
-     return Padding(padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),child: GestureDetector(
+     return countries[index].deaths==null||countries[index].active==null||countries[index].recovered==null?
+       Container():Padding(padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),child: GestureDetector(
        onTap:()=>_selectCountry(countries[index]),
-       child:countries[index].population==null?Container():CardCountryWidget(countries[index])),
+       child:CardCountryWidget(countries[index])),
        );
       }
     );
@@ -125,7 +126,7 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
           stretch: true,
           snap: true,
           backgroundColor: Constants.BACKGROUND1,
-          expandedHeight: MediaQuery.of(context).size.height*0.5,
+          expandedHeight: MediaQuery.of(context).size.height*0.55,
           floating: true,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
@@ -145,14 +146,14 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
           physics: NeverScrollableScrollPhysics(),  
           children: <Widget>[
           Padding(padding: EdgeInsets.only(bottom: 15,left: 15,right: 15),child:separationLine()),
-          estatiscticLine("População", value(_country.population)),
-          estatiscticLine("Total de casos", valueWithToday(_country.cases, _country.todayCases, Colors.red)),
-          estatiscticLine("Total de mortos", valueWithToday(_country.deaths, _country.todayDeaths, Colors.red)),
-          estatiscticLine("Recuperados", value(_country.recovered)),
-          estatiscticLine("Ativos", value(_country.active)),
-          estatiscticLine("Testes", value(_country.tests)),
-          estatiscticLine("Casos por milhão", value(_country.casesPerOneMillion.toInt())),
-          estatiscticLine("Mortes por milhão", value(_country.deathsPerOneMillion.toInt())),
+          _country.population==null?Container():estatiscticLine("População", value(_country.population)),
+          _country.cases==null?Container():estatiscticLine("Total de casos", valueWithToday(_country.cases, _country.todayCases, Colors.red)),
+          _country.deaths==null?Container():estatiscticLine("Total de mortos", valueWithToday(_country.deaths, _country.todayDeaths, Colors.red)),
+          _country.recovered==null?Container(): estatiscticLine("Recuperados", value(_country.recovered)),
+          _country.active==null?Container():estatiscticLine("Ativos", value(_country.active)),
+          _country.tests==null?Container():estatiscticLine("Testes", value(_country.tests)),
+          _country.casesPerOneMillion==null?Container():estatiscticLine("Casos por milhão", value(_country.casesPerOneMillion.toInt())),
+          _country.deathsPerOneMillion==null?Container():estatiscticLine("Mortes por milhão", value(_country.deathsPerOneMillion.toInt())),
           _country.recoverPerOneMillion==null?Container():estatiscticLine("Recuperados por milhão", value(_country.recoverPerOneMillion.toInt()))
           ],),
         )   

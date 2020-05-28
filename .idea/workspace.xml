@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17a0ef13-cd03-41d3-b01d-55c198b39855" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/covid_global/lib/app/shared/constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/home/home_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/lib/app/modules/menu/menu_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covid_global/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/covid_global/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
