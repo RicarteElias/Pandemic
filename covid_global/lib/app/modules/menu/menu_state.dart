@@ -138,7 +138,11 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
                 StretchMode.fadeTitle,
               ],
             title: Text("Estatísticas - ${_country.country}", style: TextStyle(fontSize: 22),),
-            background: Container(padding: EdgeInsets.all(40),child: DonutChart(country: _country,)),
+            background: Container(
+              padding: EdgeInsets.all(50),
+              color:Constants.BACKGROUND1,
+              child: DonutChart(country: _country,),
+            ),
           ),
         ),
         SliverFillRemaining(
@@ -165,9 +169,10 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
     return Container(
       color: Colors.grey[600],
       height: 3,
-
     ) ;
   }
+
+
 
    estatiscticLine(String text,Widget valor)=> Padding(
      padding: const EdgeInsets.only(left: 15),

@@ -33,7 +33,15 @@ class DonutChart extends StatelessWidget {
               )
             )
         ]
-      ),
+      ),behaviors: [
+        charts.DatumLegend(
+          desiredMaxRows: 2,
+          outsideJustification: charts.OutsideJustification.start,
+          horizontalFirst: false,
+          entryTextStyle: charts.TextStyleSpec(color: charts.MaterialPalette.white,fontWeight: 'bold',fontSize: 18)
+          
+        )
+      ],
 
     );
   }
