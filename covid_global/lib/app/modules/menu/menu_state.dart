@@ -1,6 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:covidglobal/app/entity/country.dart';
 import 'package:covidglobal/app/shared/components/donut_chart/donut_chart_widget.dart';
+import 'package:covidglobal/app/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
@@ -61,6 +62,7 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
       ),
     bottomNavigationBar: BottomNavyBar(
       showElevation: true,
+      
         selectedIndex: _currentIndex,
         onItemSelected: (index) {
           _pageController.jumpToPage(index); 
@@ -71,7 +73,7 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
           BottomNavyBarItem(
             inactiveColor: Colors.black,
             activeColor: _backgroundColorController,
-            title: Text('Brasil'),
+            title: Text(_country.country),
             icon: Icon(Icons.home)
           ),
           BottomNavyBarItem(
@@ -108,7 +110,10 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
   (
     itemCount: countries.length,
     itemBuilder: (BuildContext ctxt, int index) {
-     return Padding(padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),child: CardCountryWidget(countries[index]),);
+     return Padding(padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),child: GestureDetector(
+       onTap:()=>_selectCountry(countries[index]),
+       child:countries[index].population==null?Container():CardCountryWidget(countries[index])),
+       );
       }
     );
 
@@ -116,20 +121,22 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
     return CustomScrollView(
       slivers: <Widget>[
     SliverAppBar(
+             textTheme:TextTheme(headline1: TextStyle(fontSize: 30)) ,
           stretch: true,
-          centerTitle: true,
-          backgroundColor: Colors.deepPurple,
+          snap: true,
+          backgroundColor: Constants.BACKGROUND1,
           expandedHeight: MediaQuery.of(context).size.height*0.5,
           floating: true,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
-
+            collapseMode: CollapseMode.parallax,
+            titlePadding: EdgeInsets.only(left: 15,bottom: 5),
             stretchModes:  <StretchMode>[
                 StretchMode.zoomBackground,
                 StretchMode.blurBackground,
                 StretchMode.fadeTitle,
               ],
-            title: Text("Estatísticas - Brasil"),
+            title: Text("Estatísticas - ${_country.country}", style: TextStyle(fontSize: 22),),
             background: Container(padding: EdgeInsets.all(40),child: DonutChart(country: _country,)),
           ),
         ),
@@ -137,7 +144,7 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
           child: ListView(
           physics: NeverScrollableScrollPhysics(),  
           children: <Widget>[
-          Padding(padding: EdgeInsets.all(15),child:separationLine()),
+          Padding(padding: EdgeInsets.only(bottom: 15,left: 15,right: 15),child:separationLine()),
           estatiscticLine("População", value(_country.population)),
           estatiscticLine("Total de casos", valueWithToday(_country.cases, _country.todayCases, Colors.red)),
           estatiscticLine("Total de mortos", valueWithToday(_country.deaths, _country.todayDeaths, Colors.red)),
@@ -147,23 +154,8 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
           estatiscticLine("Casos por milhão", value(_country.casesPerOneMillion.toInt())),
           estatiscticLine("Mortes por milhão", value(_country.deathsPerOneMillion.toInt())),
           _country.recoverPerOneMillion==null?Container():estatiscticLine("Recuperados por milhão", value(_country.recoverPerOneMillion.toInt()))
-            ],),
-        )
-        
-        // SliverList(delegate: SliverChildListDelegate(
-        //   [ Padding(padding: EdgeInsets.all(15),child:separationLine()),
-        //   estatiscticLine("População", value(_country.population)),
-        //   estatiscticLine("Total de casos", valueWithToday(_country.cases, _country.todayCases, Colors.red)),
-        //   estatiscticLine("Total de mortos", valueWithToday(_country.deaths, _country.todayDeaths, Colors.red)),
-        //   estatiscticLine("Recuperados", value(_country.recovered)),
-        //   estatiscticLine("Ativos", value(_country.active)),
-        //   estatiscticLine("Testes", value(_country.tests)),
-        //   estatiscticLine("Casos por milhão", value(_country.casesPerOneMillion.toInt())),
-        //   estatiscticLine("Mortes por milhão", value(_country.deathsPerOneMillion.toInt())),
-        //   _country.recoverPerOneMillion==null?Container():estatiscticLine("Recuperados por milhão", value(_country.recoverPerOneMillion.toInt()))
-        //         ]
-        //       )
-        //   ),   
+          ],),
+        )   
       ],
     );
   }
@@ -188,14 +180,19 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
      ],)
    );
 
-   valueWithToday(int value, int todayValue,Color todayColor)=> Row(
+    valueWithToday(int value, int todayValue,Color todayColor)=> Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
     Text(value.toString(),style: TextStyle(color:Colors.white,fontSize: 28),),
-    Icon(FlutterIcons.arrow_bold_up_ent,size: 10,color: todayColor,),
-    Text(todayValue.toString(),style: TextStyle(color:todayColor,fontSize: 15),),
+    todayValue==null?Container():Icon(MaterialIcons.arrow_upward,size: 15,color: todayColor,),
+    todayValue==null?Container():Text(todayValue.toString(),style: TextStyle(color:todayColor,fontSize: 15),),
       ],);
 
+   void _selectCountry(Country country){
+      _country = country;
+      logger.wtf(_country.toJson());
+      _pageController.jumpToPage(0);
+   }
 
 
     value(int value)=> Row(
@@ -204,10 +201,8 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
       ],);
 
       static _collorSelector(int index){
-      if(index==0) { 
-          return Colors.deepPurple;
-      }else if(index==1){
-          return Colors.deepPurple;
+      if(index==0 || index==1) { 
+          return Constants.BACKGROUND1;
       }else if(index==2){
           return Colors.grey;
       }else{

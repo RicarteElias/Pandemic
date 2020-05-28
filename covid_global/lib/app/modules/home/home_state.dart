@@ -1,5 +1,5 @@
-import 'package:covidglobal/app/entity/country.dart';
 import 'package:covidglobal/app/repositories/country_repository.dart';
+import 'package:covidglobal/app/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:logger/logger.dart';
@@ -23,7 +23,6 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
         _controller.forward();
 
     _countryRepository.countryList().then((countries){
-      Country brazil = countries.firstWhere((element) => element.country == 'Brazil');
       Navigator.pushReplacementNamed(context, '/menu', arguments: countries);
     });
         
@@ -40,7 +39,7 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
       return Scaffold(
               body: 
               Container(
-              color: Colors.white,
+              color: Constants.BACKGROUND1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[
                 ScaleTransition(
@@ -54,7 +53,7 @@ class HomeState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                   ), Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Text("Carregando informações",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
+                    child: Text("Carregando informações",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, fontStyle: FontStyle.italic,color: Colors.white),),
                   )
               ],)
           ),
