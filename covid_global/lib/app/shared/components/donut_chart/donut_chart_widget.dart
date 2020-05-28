@@ -23,11 +23,11 @@ class DonutChart extends StatelessWidget {
       defaultRenderer: charts.ArcRendererConfig(
         arcRendererDecorators: [
           charts.ArcLabelDecorator(
-            insideLabelStyleSpec: charts.TextStyleSpec(fontSize: 26,
+            insideLabelStyleSpec: charts.TextStyleSpec(fontSize: 20,
             color: charts.MaterialPalette.white,
             fontFamily: 'Roboto',
               ),
-            outsideLabelStyleSpec: charts.TextStyleSpec(fontSize: 26,
+            outsideLabelStyleSpec: charts.TextStyleSpec(fontSize: 20,
             color: charts.MaterialPalette.white,
             fontFamily: 'Roboto',
               )
@@ -36,10 +36,11 @@ class DonutChart extends StatelessWidget {
       ),behaviors: [
         charts.DatumLegend(
           desiredMaxRows: 2,
+          position: charts.BehaviorPosition.top,
+          cellPadding: EdgeInsets.all(2),
           outsideJustification: charts.OutsideJustification.start,
           horizontalFirst: false,
-          entryTextStyle: charts.TextStyleSpec(color: charts.MaterialPalette.white,fontWeight: 'bold',fontSize: 18)
-          
+          entryTextStyle: charts.TextStyleSpec(color: charts.MaterialPalette.white,fontWeight: 'bold',fontSize: 15)
         )
       ],
 
@@ -47,11 +48,15 @@ class DonutChart extends StatelessWidget {
   }
   
 
-  _generateData(){ 
+  _generateData(){
+    double deathValue = DataUtils.percentIndicator(country.deaths, country.cases);
+    double recoveredValue = DataUtils.percentIndicator(country.recovered, country.cases);
+    double activeValue = DataUtils.percentIndicator(country.active, country.cases);
+
     _donutData=[
-      Indicator(color: Colors.red,value:DataUtils.percentIndicator(country.deaths, country.cases) ,text: "Mortos" ),
-      Indicator(color: Colors.green,value: DataUtils.percentIndicator(country.recovered, country.cases),text:"Recuperados"),
-      Indicator(color: Colors.blue,value:DataUtils.percentIndicator(country.active, country.cases),text: "Infectados")
+      Indicator(color: Colors.red,value:deathValue ,text: "Mortos - $deathValue%" ),
+      Indicator(color: Colors.green,value:recoveredValue ,text:"Recuperados - $recoveredValue%"),
+      Indicator(color: Colors.blue,value:activeValue,text: "Ativos - $activeValue%")
     ];
 
     _series.add(

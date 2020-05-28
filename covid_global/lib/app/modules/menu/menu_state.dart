@@ -122,7 +122,6 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
     return CustomScrollView(
       slivers: <Widget>[
     SliverAppBar(
-             textTheme:TextTheme(headline1: TextStyle(fontSize: 30)) ,
           stretch: true,
           snap: true,
           backgroundColor: Constants.BACKGROUND1,
@@ -137,9 +136,9 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
                 StretchMode.blurBackground,
                 StretchMode.fadeTitle,
               ],
-            title: Text("Estatísticas - ${_country.country}", style: TextStyle(fontSize: 22),),
+            title: Text("Estatísticas - ${_country.country}", style: TextStyle(fontSize: 18),),
             background: Container(
-              padding: EdgeInsets.all(50),
+              padding: EdgeInsets.only(top: 30,bottom: 40, left: 10),
               color:Constants.BACKGROUND1,
               child: DonutChart(country: _country,),
             ),
@@ -179,7 +178,7 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
      child: Column(children: <Widget>[
        Row(
       children: <Widget>[
-      Text('$text:',style: TextStyle(color: Colors.white, fontSize: 25),),Padding(padding: EdgeInsets.only(left: 5),child: 
+      Text('$text:',style: TextStyle(color: Colors.white, fontSize: 18),),Padding(padding: EdgeInsets.only(left: 5),child: 
       valor,)
       ], ),
       Padding(padding: EdgeInsets.only(top:15, bottom: 15,right: 15),child: separationLine(),)
@@ -189,9 +188,9 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
     valueWithToday(int value, int todayValue,Color todayColor)=> Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-    Text(value.toString(),style: TextStyle(color:Colors.white,fontSize: 28),),
+    Text(value.toString(),style: TextStyle(color:Colors.white,fontSize: 18),),
     todayValue==null?Container():Icon(MaterialIcons.arrow_upward,size: 15,color: todayColor,),
-    todayValue==null?Container():Text(todayValue.toString(),style: TextStyle(color:todayColor,fontSize: 15),),
+    todayValue==null?Container():Text(todayValue.toString(),style: TextStyle(color:todayColor,fontSize: 10),),
       ],);
 
    void _selectCountry(Country country){
@@ -203,7 +202,7 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
 
     value(int value)=> Row(
     children: <Widget>[
-    Text(value.toString(),style: TextStyle(color:Colors.white,fontSize: 28),),
+    Text(value.toString(),style: TextStyle(color:Colors.white,fontSize: 18),),
       ],);
 
       static _collorSelector(int index){
