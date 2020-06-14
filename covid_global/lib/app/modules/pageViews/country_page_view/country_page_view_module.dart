@@ -1,6 +1,6 @@
-import 'package:covidglobal/app/modules/country_page_view/country_page_view_bloc.dart';
+import 'package:covidglobal/app/modules/pageViews/country_page_view/country_page_view_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:covidglobal/app/modules/country_page_view/country_page_view_page.dart';
+import 'country_page_view_page.dart';
 
 class CountryPageViewModule extends ChildModule {
   @override
