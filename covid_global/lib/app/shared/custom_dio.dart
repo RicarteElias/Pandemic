@@ -7,11 +7,16 @@ class CustomDio {
   static Dio _dio;
 
   static Dio getInstance(){
-    _dio= new Dio();
-    _dio.options.baseUrl="https://disease.sh/";
-    _dio.options.connectTimeout = 5000; //5s
-    _dio.options.receiveTimeout = 3000;
-    return _dio;
+    if(_dio==null){
+      _dio= new Dio();
+      _dio.options.baseUrl="https://disease.sh/";
+      _dio.options.connectTimeout = 5000; //5s
+      _dio.options.receiveTimeout = 3000;
+      return _dio;
+    }
+    else{
+      return _dio;
+    }
   }
 }
 

@@ -171,8 +171,6 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
     ) ;
   }
 
-
-
    estatiscticLine(String text,Widget valor)=> Padding(
      padding: const EdgeInsets.only(left: 15),
      child: Column(children: <Widget>[
@@ -195,7 +193,7 @@ class MenuState extends State<MenuPage> with SingleTickerProviderStateMixin  {
 
    void _selectCountry(Country country){
       _country = country;
-      logger.wtf(_country.toJson());
+      // logger.wtf(_country.toJson());
       _pageController.jumpToPage(0);
    }
 
